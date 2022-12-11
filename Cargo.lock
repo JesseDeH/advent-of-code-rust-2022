@@ -3,6 +3,13 @@
 version = 3
 
 [[package]]
+name = "advent-of-code-rust-2022"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+]
+
+[[package]]
 name = "either"
 version = "1.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -15,11 +22,4 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b0fd2260e829bddf4cb6ea802289de2f86d6a7a690192fbe91b3f46e0f2c8473"
 dependencies = [
  "either",
-]
-
-[[package]]
-name = "part2"
-version = "0.1.0"
-dependencies = [
- "itertools",
 ]

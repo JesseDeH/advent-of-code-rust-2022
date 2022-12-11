@@ -1,8 +1,33 @@
 use itertools::Itertools;
 use std::cmp;
 
-fn main() {
-    let mut input = include_str!("input.txt").lines();
+pub fn solve_part1(input: &str) -> i32 {
+    let input = input.lines();
+    let mut duplicates = Vec::new();
+
+    for line in input {
+        let half = line.len() / 2;
+        let splits = line.split_at(half);
+        for char_left in splits.0.chars() {
+            let mut found = false;
+            for char_right in splits.1.chars() {
+                if char_left == char_right {
+                    found = true;
+                    duplicates.push(convert_to_priority(char_left));
+                    break;
+                }
+            }
+            if found {
+                break;
+            }
+        }
+    }
+
+    duplicates.iter().sum()
+}
+
+pub fn solve_part2(raw_input: &str) -> i32 {
+    let mut input = raw_input.lines();
     let mut sum = 0;
 
     let mut line1 = input.next();
@@ -39,12 +64,12 @@ fn main() {
         line2 = input.next();
         line3 = input.next();
     }
-
-    println!("{sum}");
+    
+    sum
 }
 
-fn convert_to_priority(character: char) -> i32 {
-    if character.is_uppercase() {
+fn convert_to_priority(character: char) -> i32{
+    if character.is_uppercase(){
         character as i32 - 38
     } else {
         character as i32 - 96

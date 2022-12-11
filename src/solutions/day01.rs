@@ -1,7 +1,28 @@
 use itertools::Itertools;
+use std::cmp;
 
-fn main() {
-    let grouped_lines = include_str!("input.txt")
+pub fn solve_part1(input: &str) -> i32 {
+    let lines = input.lines();
+
+    let mut total = 0;
+    let mut max = 0;
+
+    for line in lines {
+        if line.is_empty() {
+            max = cmp::max(max, total);
+            total = 0;
+            continue;
+        }
+        let weight = line.parse::<i32>().expect("line not parseable");
+        total += weight;
+    }
+
+    total
+}
+
+
+pub fn solve_part2(input: &str) -> i32 {
+    let grouped_lines = input
         .lines()
         .group_by(|line| line.is_empty());
 
@@ -26,7 +47,5 @@ fn main() {
         }
     }
 
-    let total: i32 = result.iter().sum();
-
-    print!("{total}")
+   result.iter().sum()
 }

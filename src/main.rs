@@ -52,6 +52,14 @@ fn solve(day: i32, part: i32) {
             "{}",
             solutions::day04::solve_part2(include_str!("solutions/input/day04.txt"))
         ),
+        (5, 1) => println!(
+            "{}",
+            solutions::day05::solve_part1(include_str!("solutions/input/day05.txt"))
+        ),
+        (5, 2) => println!(
+            "{}",
+            solutions::day05::solve_part2(include_str!("solutions/input/day05.txt"))
+        ),
         _ => println!("not found"),
     }
 }

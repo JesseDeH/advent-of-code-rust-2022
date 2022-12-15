@@ -78,11 +78,6 @@ fn get_scenic_score(tree_x: usize, tree_y: usize, forest: &Vec<Vec<u32>>) -> usi
     let top_score = count_direction((tree_x, tree_y), size, &forest, |(x, y)| (x, y - 1));
     let bottom_score = count_direction((tree_x, tree_y), size, &forest, |(x, y)| (x, y + 1));
 
-    println!(
-        "({}, {}): {} * {} * {} * {}",
-        tree_x, tree_y, left_score, right_score, top_score, bottom_score
-    );
-
     left_score * right_score * top_score * bottom_score
 }
 

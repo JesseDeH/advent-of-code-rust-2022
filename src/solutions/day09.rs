@@ -36,14 +36,14 @@ fn move_rope(
     for _ in 0..move_amount {
         pieces[0] = add(pieces[0], move_step);
         for i in 1..pieces.len() {
-            pieces[i] = add(pieces[i], check_tail_move(pieces[i - 1], pieces[i]));
+            pieces[i] = add(pieces[i], move_tail(pieces[i - 1], pieces[i]));
         }
 
         visited.insert(pieces[pieces.len() - 1]);
     }
 }
 
-fn check_tail_move(head_location: Vector, tail_location: Vector) -> Vector {
+fn move_tail(head_location: Vector, tail_location: Vector) -> Vector {
     let delta = sub(head_location, tail_location);
     match delta {
         (d_x, d_y) if d_x.abs() >= 2 || d_y.abs() >= 2 => (
